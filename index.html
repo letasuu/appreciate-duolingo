@@ -3,10 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>鑑賞duolingo</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>duolingo~</h1>
-  <p>duo~</p>
-  <img src="C:\Users\sodai\Desktop\kadai\geijutushien\appreciate-duolingo\unnamed.png" />
+  <main class="page">
+    <!-- 上部に複数の「行」を表示。ここに画像を移動させる -->
+    <div class="lines" id="lines">
+      <div class="line" data-index="0"></div>
+      <div class="line" data-index="1"></div>
+      <div class="line" data-index="2"></div>
+      <div class="line" data-index="3"></div>
+      <div class="line" data-index="4"></div>
+    </div>
+
+    <div class="content">
+      <h1 id="title">duolingo~</h1>
+      <p id="subtitle">duo~</p>
+      <!-- 相対パスに変更（リポジトリ内に画像を置く想定） -->
+      <img id="duoImg" src="unnamed.png" alt="duo" />
+    </div>
+  </main>
+
+  <!-- 画面下部のボタンバー: 各ボタンで指定行へ移動 -->
+  <div class="button-bar" id="buttonBar" aria-label="移動ボタン">
+    <button data-line="0">行1</button>
+    <button data-line="1">行2</button>
+    <button data-line="2">行3</button>
+    <button data-line="3">行4</button>
+    <button data-line="4">行5</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
