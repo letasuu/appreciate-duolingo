@@ -8,6 +8,14 @@ html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Robo
 .lines{position:relative;width:100%;max-width:800px;margin:0 auto 12px}
 .line{height:84px;border-bottom:1px dashed rgba(0,0,0,0.08);}
 
+/* slot: 行に移動したボタンが入る領域（右寄せ、横並び） */
+.line{position:relative}
+.line .slot{position:absolute;right:16px;top:50%;transform:translateY(-50%);display:flex;gap:8px;align-items:center}
+.line .slot button{margin:0}
+
+/* トランスフォームでアニメーションする準備 */
+.button-bar button,.line .slot button{transition:transform 320ms cubic-bezier(.2,.9,.2,1),opacity 160ms}
+
 .content{position:relative;max-width:800px;margin:0 auto;padding:8px}
 #title{margin:8px 0}
 
