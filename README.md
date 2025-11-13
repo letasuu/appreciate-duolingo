@@ -5,6 +5,5 @@ github pages上で公開しています<br>
 https://letasuu.github.io/appreciate-duolingo/
 
 さらに、
-> ?version=[commitid]
-
-<br>をいれてあげると、最新版が表示されます
+> ?version=[commitid]<br>
+をいれてあげると、最新版が表示されます
