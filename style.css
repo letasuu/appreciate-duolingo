@@ -16,6 +16,17 @@ html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Robo
 /* トランスフォームでアニメーションする準備 */
 .button-bar button,.line .slot button{transition:transform 320ms cubic-bezier(.2,.9,.2,1),opacity 160ms}
 
+/* 内部テキストを伸縮させるためのラッパー */
+.button-bar button > span,
+.line .slot button > span{display:inline-block;transition:transform 220ms cubic-bezier(.2,.9,.2,1)}
+
+/* 移動中のエフェクト（アクティベーションが見える） */
+.moving{filter:brightness(1.03);}
+.moving > span{transform:scale(1.06)}
+
+/* 移動後のボタンに付ける右下シャドウ */
+.moved{box-shadow:4px 4px 0 rgba(0,0,0,0.08)}
+
 .content{position:relative;max-width:800px;margin:0 auto;padding:8px}
 #title{margin:8px 0}
 

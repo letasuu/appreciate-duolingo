@@ -45,14 +45,17 @@ document.addEventListener('DOMContentLoaded', () => {
 			return;
 		}
 
-		const targetIndex = Number(btn.dataset.line);
-		const targetLine = lines[targetIndex];
-		if (!targetLine) return;
-		const slot = targetLine.querySelector('.slot') || targetLine;
+		// single target slot (all buttons go into the same row)
+		const targetSlot = document.querySelector('.line .slot');
+		if (!targetSlot) return;
 
-		flipMove(btn, slot);
+		// add moving class for visual activation, flipMove will remove it after transition
+		btn.classList.add('moving');
+		flipMove(btn, targetSlot);
+		btn.classList.remove('moving');
+		btn.classList.add('moved');
 		btn.dataset.moved = 'true';
-		btn.dataset.lineMoved = String(targetIndex);
+		btn.dataset.lineMoved = '0';
 	}
 
 	// wrap each button in a home-slot so we can return it to the original place
@@ -70,6 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
 		const h = rect.height || btn.offsetHeight || 36;
 		home.style.width = w + 'px';
 		home.style.height = h + 'px';
+
+		// ensure button content is wrapped so we can animate inner text independently
+		if (!btn.querySelector('span')) {
+			const s = document.createElement('span');
+			s.innerHTML = btn.innerHTML;
+			btn.textContent = '';
+			btn.appendChild(s);
+		}
 
 		// replace button in the bar with the home slot, then append the button into it
 		buttonBar.insertBefore(home, btn);
