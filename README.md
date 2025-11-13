@@ -6,4 +6,4 @@ https://letasuu.github.io/appreciate-duolingo/
 
 さらに、
 > ?version=[commitid]
-をいれてあげると、最新版が表示されます
+<br>をいれてあげると、最新版が表示されます
