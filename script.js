@@ -1,13 +1,9 @@
 console.log("script.js: loaded");
 
 document.addEventListener('DOMContentLoaded', () => {
-	const img = document.getElementById('duoImg');
 	const lines = Array.from(document.querySelectorAll('.line'));
-	const buttons = Array.from(document.querySelectorAll('.button-bar button'));
+	let buttons = Array.from(document.querySelectorAll('.button-bar button'));
 	const buttonBar = document.querySelector('.button-bar');
-
-	// Ensure image is absolutely positioned relative to .page
-	if (img) img.style.position = 'absolute';
 
 	// simple helper: FLIP animation when moving element between containers
 	function flipMove(el, newParent) {
@@ -41,8 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	function handleButtonClick(btn) {
 		const isMoved = btn.dataset.moved === 'true';
 		if (isMoved) {
-			// move back to button bar
-			flipMove(btn, buttonBar);
+			// move back to its original home slot if present
+			const home = btn._home || buttonBar;
+			flipMove(btn, home);
 			btn.dataset.moved = 'false';
 			delete btn.dataset.lineMoved;
 			return;
@@ -58,13 +55,33 @@ document.addEventListener('DOMContentLoaded', () => {
 		btn.dataset.lineMoved = String(targetIndex);
 	}
 
+	// wrap each button in a home-slot so we can return it to the original place
 	buttons.forEach(btn => {
+		const home = document.createElement('div');
+		home.className = 'home-slot';
+		// style to reserve space when empty
+		home.style.display = 'inline-flex';
+		home.style.alignItems = 'center';
+		home.style.justifyContent = 'center';
+
+		// set explicit size to avoid layout shift when button is moved
+		const rect = btn.getBoundingClientRect();
+		const w = rect.width || btn.offsetWidth || 80;
+		const h = rect.height || btn.offsetHeight || 36;
+		home.style.width = w + 'px';
+		home.style.height = h + 'px';
+
+		// replace button in the bar with the home slot, then append the button into it
+		buttonBar.insertBefore(home, btn);
+		home.appendChild(btn);
+		// store reference for returning later
+		btn._home = home;
+
 		btn.addEventListener('click', () => handleButtonClick(btn));
 	});
 
-	// initial placement for image
-	if (lines.length && img) {
-		const top = lines[0].offsetTop + Math.max(0, (lines[0].clientHeight - img.clientHeight) / 2);
-		img.style.top = top + 'px';
-	}
+	// refresh buttons list to reflect DOM arrangement
+	buttons = Array.from(document.querySelectorAll('.button-bar button'));
+
+	// No image to place — buttons only behavior
 });

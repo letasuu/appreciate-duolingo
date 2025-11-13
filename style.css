@@ -8,9 +8,9 @@ html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Robo
 .lines{position:relative;width:100%;max-width:800px;margin:0 auto 12px}
 .line{height:84px;border-bottom:1px dashed rgba(0,0,0,0.08);}
 
-/* slot: 行に移動したボタンが入る領域（右寄せ、横並び） */
+/* slot: 行に移動したボタンが入る領域（左寄せ、横並び） */
 .line{position:relative}
-.line .slot{position:absolute;right:16px;top:50%;transform:translateY(-50%);display:flex;gap:8px;align-items:center}
+.line .slot{position:absolute;left:16px;top:50%;transform:translateY(-50%);display:flex;gap:8px;align-items:center}
 .line .slot button{margin:0}
 
 /* トランスフォームでアニメーションする準備 */
@@ -19,13 +19,16 @@ html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Robo
 .content{position:relative;max-width:800px;margin:0 auto;padding:8px}
 #title{margin:8px 0}
 
-/* 画像は絶対配置して行内を移動させる */
-#duoImg{position:absolute;left:24px;width:120px;height:auto;transition:top 360ms cubic-bezier(.2,.9,.2,1);will-change:top}
+/* 画像は削除済み（当初のデザインでは #duoImg があったが、現在不要） */
 
 /* 下部のボタンバー */
 .button-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;display:flex;gap:8px;padding:8px;background:rgba(255,255,255,0.95);border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
 .button-bar button{padding:8px 12px;border:1px solid #ddd;background:#fff;border-radius:8px;cursor:pointer}
 .button-bar button:active{transform:translateY(1px)}
+
+/* home-slot reserves original button space in the button-bar */
+.home-slot{display:flex;align-items:center;justify-content:center}
+.home-slot:empty{min-width:64px}
 
 /* レスポンシブ */
 @media (max-width:420px){#duoImg{width:88px}.line{height:68px}}
