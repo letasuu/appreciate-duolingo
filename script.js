@@ -3,7 +3,6 @@ console.log("script.js: loaded");
 document.addEventListener('DOMContentLoaded', () => {
 	const lines = Array.from(document.querySelectorAll('.line'));
 	let buttons = Array.from(document.querySelectorAll('.button-bar button'));
-	const buttonBar = document.querySelector('.button-bar');
 
 	// simple helper: FLIP animation when moving element between containers
 	function flipMove(el, newParent) {
@@ -38,24 +37,25 @@ document.addEventListener('DOMContentLoaded', () => {
 		const isMoved = btn.dataset.moved === 'true';
 		if (isMoved) {
 			// move back to its original home slot if present
-			const home = btn._home || buttonBar;
+			const home = btn._home || document.querySelector('.button-bar');
+			if (!home) return;
 			flipMove(btn, home);
 			btn.dataset.moved = 'false';
-			delete btn.dataset.lineMoved;
+			delete btn.dataset.typeMoved;
 			return;
 		}
 
-		// single target slot (all buttons go into the same row)
+		// target is always the single .line .slot (lines are not separated)
 		const targetSlot = document.querySelector('.line .slot');
 		if (!targetSlot) return;
 
-		// add moving class for visual activation, flipMove will remove it after transition
+		// add moving class for visual activation
 		btn.classList.add('moving');
 		flipMove(btn, targetSlot);
 		btn.classList.remove('moving');
 		btn.classList.add('moved');
 		btn.dataset.moved = 'true';
-		btn.dataset.lineMoved = '0';
+		btn.dataset.typeMoved = btn.dataset.type || 'unknown';
 	}
 
 	// wrap each button in a home-slot so we can return it to the original place
@@ -83,7 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 
 		// replace button in the bar with the home slot, then append the button into it
-		buttonBar.insertBefore(home, btn);
+		const parentBar = btn.parentElement;
+		(parentBar || document.body).insertBefore(home, btn);
 		home.appendChild(btn);
 		// store reference for returning later
 		btn._home = home;

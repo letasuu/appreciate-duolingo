@@ -6,27 +6,42 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="page">
-    <!-- 上部に複数の「行」を表示。ここに画像を移動させる -->
-    <!-- 移動後のボタンはこの一つの行に追加されます -->
-    <div class="lines" id="lines">
-      <div class="line" data-index="0"><div class="slot" aria-hidden="true"></div></div>
-    </div>
 
+  <main class="page">
     <div class="content">
       <h1 id="title">duolingo~</h1>
       <p id="subtitle">duo~</p>
     </div>
+    
+    <div class="lines" id="lines">
+      <div class="line" data-index="0"><div class="slot" aria-hidden="true"></div></div>
+    </div>
+
   </main>
 
-  <!-- 画面下部のボタンバー: 各ボタンで指定行へ移動 -->
-  <div class="button-bar" id="buttonBar" aria-label="移動ボタン">
-    <button data-line="0">透けるような</button>
-    <button data-line="1">質感</button>
-    <button data-line="2">きめ細やかな</button>
-    <button data-line="3">色彩感覚</button>
-    <button data-line="4">タッチ</button>
-    <button data-line="5">幻想的な</button>
+  <!-- 下部のボタンエリア: 横並びの2カラムと、最下部の全幅保存ボタン -->
+  <div class="bottom-area">
+    <div class="button-area">
+      <div class="button-column" id="col-attention">
+        <div class="bar-label">対象</div>
+        <div class="button-bar" id="buttonBar-attention" aria-label="attention 移動ボタン">
+          <button data-type="attention">色彩感覚</button>
+          <button data-type="attention">質感</button>
+          <button data-type="attention">タッチ</button>
+        </div>
+      </div>
+
+      <div class="button-column" id="col-adjective">
+        <div class="bar-label">形容詞</div>
+        <div class="button-bar" id="buttonBar-adjective" aria-label="adjective 移動ボタン">
+          <button data-type="adjective">透けるような</button>
+          <button data-type="adjective">きめ細やかな</button>
+          <button data-type="adjective">幻想的な</button>
+        </div>
+      </div>
+    </div>
+
+    <button id="saveButton" aria-label="保存">保存</button>
   </div>
 
   <script src="script.js"></script>
