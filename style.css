@@ -5,9 +5,9 @@
 	--unit:calc(100vh / 6);
 	--ui-scale:1.0;
 	/* Figma-inspired palette */
-	--brand-green:#58cc02;
-	--brand-green-700:#3aa002;
-	--accent-orange:#ffb400;
+	--brand-green:#FFA900;
+	--brand-green-700:#cc8700;
+	--accent-orange:#00B3F6;
 	--review-purple:#6a1b9a;
 	--bg:#f6faf6;
 	--card-bg:#ffffff;
@@ -85,7 +85,8 @@ html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Robo
 }
 
 /* save button: full width rectangle at the very bottom, 1 unit high */
-#saveButton{height:calc(var(--unit) * 0.6);max-width:100%;margin:1em;border:none;background:var(--brand-green);color:white;font-weight:800;font-size:calc(48px * var(--ui-scale));display:flex;align-items:center;justify-content:center;box-shadow:0 12px 32px rgba(11,23,32,0.08);border-radius:calc(12px * var(--ui-scale))}
+#saveButton{height:calc(var(--unit) * 0.6);max-width:100%;margin:1em;border:2px solid #cc8700;background:#ffa900;color:#f5f5f5;font-weight:600;font-size:calc(28px * var(--ui-scale));display:flex;align-items:center;justify-content:center;box-shadow:0 calc(7.04% * var(--unit)) 0 #cc8700;border-radius:calc(10px * var(--ui-scale));cursor:pointer;transition:all 100ms;position:relative;top:0}
+#saveButton:active{top:calc(7.04% * var(--unit));box-shadow:none}
 .button-bar button:active{transform:translateY(1px)}
 
 /* home-slot reserves original button space in the button-bar */
@@ -114,5 +115,5 @@ html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Robo
 .preview-close{position:absolute;top:18px;right:18px;background:#222;color:#fff;border:none;padding:12px 18px;border-radius:10px;cursor:pointer}
 
 /* title styling to reflect figma */
-#title{font-size:calc(64px * var(--ui-scale));margin:0;color:var(--brand-green-700);letter-spacing:0.02em}
+#title{font-size:calc(64px * var(--ui-scale));margin:0;color:#00B3F6;letter-spacing:0.02em}
 #subtitle{font-size:calc(28px * var(--ui-scale));color:var(--muted);margin-top:6px}
