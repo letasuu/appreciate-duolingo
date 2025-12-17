@@ -155,6 +155,14 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
+	const clearBtn = document.getElementById('clearButton');
+	if (clearBtn) {
+		clearBtn.addEventListener('click', () => {
+			const movedButtons = Array.from(document.querySelectorAll('.line .slot button'));
+			movedButtons.forEach(btn => btn.click());
+		});
+	}
+
 	function showPreview(items){
 		let overlay = document.getElementById('previewOverlay');
 		if (!overlay){

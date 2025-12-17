@@ -87,6 +87,9 @@ html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Robo
 /* save button: full width rectangle at the very bottom, 1 unit high */
 #saveButton{height:calc(var(--unit) * 0.6);max-width:100%;margin:1em;border:2px solid #cc8700;background:#ffa900;color:#f5f5f5;font-weight:600;font-size:calc(28px * var(--ui-scale));display:flex;align-items:center;justify-content:center;box-shadow:0 calc(7.04% * var(--unit)) 0 #cc8700;border-radius:calc(10px * var(--ui-scale));cursor:pointer;transition:all 100ms;position:relative;top:0}
 #saveButton:active{top:calc(7.04% * var(--unit));box-shadow:none}
+#clearButton{max-width:100%;margin:0 1em 0.6em;border:2px dashed rgba(11,23,32,0.12);background:#fff;color:var(--text);font-weight:600;font-size:calc(24px * var(--ui-scale));display:flex;align-items:center;justify-content:center;border-radius:calc(10px * var(--ui-scale));cursor:pointer;transition:transform 100ms, box-shadow 100ms, background 120ms;position:relative;top:0;padding:calc(14px * var(--ui-scale));box-shadow:0 6px 0 rgba(11,23,32,0.08)}
+#clearButton:hover{background:#f7f9f7}
+#clearButton:active{top:6px;box-shadow:none}
 .button-bar button:active{transform:translateY(1px)}
 
 /* home-slot reserves original button space in the button-bar */
@@ -109,10 +112,10 @@ html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Robo
 /* preview overlay shown when save button is pressed */
 .preview-overlay{position:fixed;inset:0;background:#fff;display:flex;align-items:stretch;justify-content:center;z-index:1200}
 /* full-screen preview box occupies entire viewport */
-.preview-box{position:relative;background:#fff;padding:32px;border-radius:0;width:100%;height:100%;box-shadow:none;display:flex;flex-direction:column;align-items:center;overflow:auto}
-.preview-content{display:flex;flex-direction:column;align-items:center;gap:22px;padding:16px;margin-top:48px}
+.preview-box{position:relative;background:#fff;padding:32px;border-radius:0;width:100%;height:100%;box-shadow:none;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:auto}
+.preview-content{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:16px;margin-top:0;flex:1}
 .preview-item{font-size:calc(84px * var(--ui-scale));font-weight:800;color:var(--text);text-align:center;word-break:break-word}
-.preview-close{position:absolute;top:18px;right:18px;background:#222;color:#fff;border:none;padding:12px 18px;border-radius:10px;cursor:pointer}
+.preview-close{position:absolute;top:18px;right:18px;background:#222;color:#fff;border:none;padding:18px 28px;border-radius:14px;cursor:pointer;font-size:calc(40px * var(--ui-scale));line-height:1.1;min-width:calc(180px * var(--ui-scale))}
 
 /* title styling to reflect figma */
 #title{font-size:calc(64px * var(--ui-scale));margin:0;color:#00B3F6;letter-spacing:0.02em}
