@@ -109,6 +109,29 @@ html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Robo
 	.content p{font-size:calc(36px * var(--ui-scale))}
 }
 
+/* short viewport support (landscape phones or short aspect ratios) */
+@media (max-height:720px){
+	:root{
+		--ui-scale:0.86;
+		--unit:calc(100vh / 7.5);
+	}
+	html,body{overflow:auto;font-size:calc(32px * var(--ui-scale))}
+	.page{padding:40px 22px 18px}
+	.lines{width:94%;margin:0 auto 6px}
+	.line{height:calc(var(--unit) * 0.9)}
+	.line .slot{gap:14px}
+	.line .slot button{padding:calc(18px * var(--ui-scale)) calc(24px * var(--ui-scale));font-size:calc(26px * var(--ui-scale));border-radius:calc(16px * var(--ui-scale))}
+	.bottom-area{position:relative;gap:10px;padding-bottom:8px}
+	.button-area{height:auto;max-height:calc(var(--unit) * 3);padding:16px 14px;gap:14px}
+	.button-column{gap:14px}
+	.button-column .bar-label{font-size:calc(24px * var(--ui-scale));padding:calc(10px * var(--ui-scale)) calc(16px * var(--ui-scale))}
+	.button-column .button-bar{padding:calc(14px * var(--ui-scale));gap:calc(10px * var(--ui-scale));max-height:32vh}
+	.button-column .button-bar button{padding:calc(16px * var(--ui-scale));font-size:calc(24px * var(--ui-scale))}
+	#clearButton{margin:0 0.8em 0.4em;font-size:calc(22px * var(--ui-scale));padding:calc(12px * var(--ui-scale));box-shadow:0 4px 0 rgba(11,23,32,0.08)}
+	#saveButton{height:calc(var(--unit) * 0.55);margin:0.8em;font-size:calc(24px * var(--ui-scale));box-shadow:0 calc(5% * var(--unit)) 0 #cc8700}
+	.preview-item{font-size:calc(64px * var(--ui-scale))}
+}
+
 /* preview overlay shown when save button is pressed */
 .preview-overlay{position:fixed;inset:0;background:#fff;display:flex;align-items:stretch;justify-content:center;z-index:1200}
 /* full-screen preview box occupies entire viewport */
